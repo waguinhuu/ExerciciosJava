@@ -7,9 +7,9 @@ public class Conta {
     private float saldo;
     private boolean status;
 
-    public Conta() {
-        this.numConta = 12345;
-        this.dono = "Wagner Silva";
+    public Conta(String d, int n) {
+        this.setDono(d);
+        this.setNumConta(n);
         this.saldo = 0;
         this.status = false;
     }
@@ -62,21 +62,25 @@ public class Conta {
         System.out.println("Status da conta: " + getStatus());
     }
     public void abrirConta(String tipo){
-        this.tipoConta = tipo;
+        //this.tipoConta = tipo;
+        setTipoConta(tipo);
         setStatus(true);
-        if(this.tipoConta.equals("cc")){
+        if(tipo.equals("cc")){
             System.out.println("Conta corrente aberta com sucesso!");
             this.saldo = 50;
-        } else if (this.tipoConta.equals("cp")) {
+        } else if (tipo.equals("cp")) {
             System.out.println("Conta poupança aberta com sucesso!");
             this.saldo = 150;
+        }else{
+            System.out.println("Conta não indentificada.");
         }
     }
     public void fecharConta(){
         if (this.saldo == 0){
-            System.out.println("Conta fechada com sucesso.");
+            setStatus(false);
+            //System.out.println("Conta fechada com sucesso.");
         }else if(this.saldo < 0){
-            System.out.println("Erro! Conta está negativada.");
+            System.out.println("Erro! Conta está em débito.");
         }else {
             System.out.println("Erro! Conta está com saldo.");
         }
@@ -86,7 +90,7 @@ public class Conta {
             this.saldo += deposito;
             System.out.println("Deposito de " + deposito + " realizado. " + this.saldo + " de saldo.");
         }else {
-            System.out.println("Conta inativa.");
+            System.out.println("Conta não aberta.");
         }
     }
     public double sacar(double saque){
