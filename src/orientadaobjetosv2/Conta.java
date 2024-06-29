@@ -1,5 +1,7 @@
 package orientadaobjetosv2;
 
+import javax.swing.*;
+
 public class Conta {
     public int numConta;
     protected String tipoConta;
@@ -7,11 +9,9 @@ public class Conta {
     private float saldo;
     private boolean status;
 
-    public Conta(String d, int n) {
-        this.setDono(d);
-        this.setNumConta(n);
-        this.saldo = 0;
-        this.status = false;
+    public Conta() {
+        this.setSaldo(0);
+        this.setStatus(false);
     }
 
     public int getNumConta() {
@@ -43,7 +43,7 @@ public class Conta {
     }
 
     public void setSaldo(float saldo) {
-        this.saldo += saldo;
+        this.saldo = saldo;
     }
 
     public boolean getStatus() {
@@ -54,7 +54,7 @@ public class Conta {
         this.status = status;
     }
 
-    public void valores() {
+    public void estadoAtual() {
         System.out.println("Número da conta: " + getNumConta());
         System.out.println("Tipo da conta: " + getTipoConta());
         System.out.println("Dono: " + getDono() );
@@ -63,50 +63,57 @@ public class Conta {
     }
     public void abrirConta(String tipo){
         //this.tipoConta = tipo;
-        setTipoConta(tipo);
-        setStatus(true);
+        this.setTipoConta(tipo);
+        this.setStatus(true);
         if(tipo.equals("cc")){
             System.out.println("Conta corrente aberta com sucesso!");
-            this.saldo = 50;
+            this.setSaldo(50);
         } else if (tipo.equals("cp")) {
             System.out.println("Conta poupança aberta com sucesso!");
-            this.saldo = 150;
+            this.setSaldo(150);
         }else{
             System.out.println("Conta não indentificada.");
         }
     }
     public void fecharConta(){
-        if (this.saldo == 0){
-            setStatus(false);
-            //System.out.println("Conta fechada com sucesso.");
-        }else if(this.saldo < 0){
+        if (this.getSaldo() == 0){
+            System.out.println("Conta fechada com sucesso.");
+        }else if(this.getSaldo() < 0){
             System.out.println("Erro! Conta está em débito.");
         }else {
             System.out.println("Erro! Conta está com saldo.");
         }
     }
-    public void depositar(double deposito){
-        if(this.status == true){
-            this.saldo += deposito;
+    public void depositar(float deposito){
+        if(this.getStatus()){
+           // this.saldo += deposito;
+            this.setSaldo(this.getSaldo() + deposito);
             System.out.println("Deposito de " + deposito + " realizado. " + this.saldo + " de saldo.");
         }else {
             System.out.println("Conta não aberta.");
         }
     }
-    public double sacar(double saque){
-        if(this.saldo > 0 || this.saldo >= saque){
-            this.saldo -= saque;
-            System.out.println("Saque realizado com sucesso!");
-        }else {
-            System.out.println("Erro! Saldo insuficiente.");
+    public void sacar(float saque) {
+        if (this.getStatus()) {
+            if (this.getSaldo() >= saque) {
+                this.setSaldo(this.getSaldo() - saque);
+                System.out.println("Saque de "+ saque + " realizado com sucesso.");
+            }else{
+                System.out.println("Saldo insuficiente.");
+            }
+        }else{
+            System.out.println("Erro! Conta não aberta.");
         }
-        return saque;
     }
-    public void pagarMensal(){
-        if(this.tipoConta.equals("cc")){
-            this.saldo -= 12;
-        }else if(this.tipoConta.equals("cp")){
-            this.saldo -= 20;
+    public void pagarMensal() {
+        if (getStatus()){
+            if (this.getTipoConta().equals("cc")) {
+                this.setSaldo(this.getSaldo() - 12);
+            } else if (this.getTipoConta().equals("cp")) {
+                this.setSaldo(this.getSaldo() - 20);
+            }
+        }else{
+            System.out.println("Impossível pagar uma conta fechada.");
         }
     }
 }

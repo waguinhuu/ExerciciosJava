@@ -2,21 +2,14 @@ package orientadaobjetosv2;
 
 public class Aula3C {
     public static void main(String[] args) {
-        Conta  b1 = new Conta("Wagner", 566);
+        Conta  b1 = new Conta();
 
-        b1.abrirConta("cp");
-        b1.pagarMensal();
-        b1.sacar(200);
-        b1.valores();
-        b1.fecharConta();
+        b1.setNumConta(1111);
+        b1.setDono("Wagner Silva");
+        b1.abrirConta("cc");
+        b1.depositar(35);
+        b1.sacar(40);
+        b1.estadoAtual();
 
-        System.out.println(" ");
-
-        Conta b2 = new  Conta("Luis", 988);
-        b2.abrirConta("cc");
-        b2.pagarMensal();
-        b2.sacar(10);
-        b2.valores();
-        b2.fecharConta();
     }
 }
