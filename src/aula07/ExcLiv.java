@@ -6,6 +6,7 @@ public class ExcLiv {
             Livro l1 = new Livro("Harry potter", "J.K Rowling", 2001);
             l1.mostrarInformacoes();
             l1.emprestar();
+            l1.devolver();
 
         }catch (RuntimeException e){
             System.out.println(e.getMessage());

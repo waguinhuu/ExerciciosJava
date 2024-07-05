@@ -92,6 +92,10 @@ public class LivroP implements Publicacao {
     @Override
     public void folhear(int p) {
         this.pagAtual = p;
+        if(p > this.totPaginas){
+            System.out.println("Número de paginas não indentificados");
+        }
+
 
     }
 
