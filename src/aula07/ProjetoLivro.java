@@ -15,6 +15,7 @@ public class ProjetoLivro {
         l[0].folhear(29);
         l[0].avancarPag();
         l[0].voltarPag();
+        p[0].fazerAniversario();
         l[0].fechar();
         System.out.println(l[0].detalhes());
     }
