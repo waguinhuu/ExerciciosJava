@@ -10,8 +10,8 @@ public class Exercicio1 {
         System.out.print("Digite um numero para tabuada: ");
         numero = scanner.nextInt();
 
-        for(int i=1; i<=10; i++){
-            System.out.printf("%d x %d = %d\n", numero, i, i*numero);
+        for (int i = 1; i <= 10; i++) {
+            System.out.printf("%d x %d = %d\n", numero, i, i * numero);
         }
 
     }
