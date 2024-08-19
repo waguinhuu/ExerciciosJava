@@ -11,7 +11,8 @@ public class FileLoader implements DataLoader, DataRemover{
         System.out.println("Removendo arquivo...");
     }
 
-    @Override    public void checkPermission() {
+    @Override
+    public void checkPermission() {
         System.out.println("Checando arquivo...");
     }
     // -> Opcional subscrever o metodo estático
