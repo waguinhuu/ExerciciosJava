@@ -16,11 +16,4 @@ public class ItemPedido {
         return precoUnitario * quantidade;
     }
 
-    @Override
-    public String toString() {
-        return
-                "\nNome = " + nome +
-                "\n PrecoUnitario = " + precoUnitario +
-                "\n Quantidade=" + quantidade;
-    }
-}
+   }
